@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="userDNForm" type="form.UserDNForm" />
+		<form-bean name="userForm" type="form.UserForm" />
+		<form-bean name="taiXeForm" type="form.TaiXeForm" />
+		<form-bean name="chuyenXeForm" type="form.ChuyenXeForm" />
+		<form-bean name="tuyenXeForm" type="form.TuyenXeForm" />
+		<form-bean name="xeForm" type="form.XeForm" />
+	</form-beans>
+	<action-mappings>
+		<action input="/DangNhap.jsp" name="userDNForm"
+			path="/dangNhap" scope="request" type="action.UserDNAction">
+			<forward name="thanhCong" path="/TrangChu.jsp" />
+			<forward name="thatBai" path="/DangNhap.jsp" />
+		</action>
+		<!-- user -->
+		<action input="/DangNhap.jsp" name="userForm"
+			path="/userAction" scope="request" type="action.UserAction">
+			<forward name="danhSachNguoiDung" path="/DanhSachNguoiDung.jsp" />
+			<forward name="themNguoiDung" path="/ThemNguoiDung.jsp" />
+			<forward name="themNguoiDungLoi" path="/ThemNguoiDung.jsp" />
+			<forward name="themNguoiDungThanhCong" path="/DanhSachNguoiDung.jsp" />
+			
+			<forward name="xoaNguoiDung" path="/XoaNguoiDung.jsp" />
+			<forward name="xoaNguoiDungLoi" path="/XoaNguoiDung.jsp" />
+			<forward name="xoaNguoiDungThanhCong" path="/DanhSachNguoiDung.jsp" />
+			
+			<forward name="suaNguoiDung" path="/SuaNguoiDung.jsp" />
+			<forward name="suaNguoiDungLoi" path="/SuaNguoiDung.jsp" />
+			<forward name="suaNguoiDungThanhCong" path="/DanhSachNguoiDung.jsp" />
+		</action>
+		<!-- tai xe -->
+		<action input="/DangNhap.jsp" name="taiXeForm"
+			path="/taiXeAction" scope="request" type="action.TaiXeAction">
+			<forward name="danhSachTaiXe" path="/DanhSachTaiXe.jsp" />
+			<forward name="themTaiXe" path="/ThemTaiXe.jsp" />
+			<forward name="themTaiXeLoi" path="/ThemTaiXe.jsp" />
+			<forward name="themTaiXeThanhCong" path="/DanhSachTaiXe.jsp" />
+			
+			<forward name="xoaTaiXe" path="/XoaTaiXe.jsp" />
+			<forward name="xoaTaiXeLoi" path="/XoaTaiXe.jsp" />
+			<forward name="xoaTaiXeThanhCong" path="/DanhSachTaiXe.jsp" />
+			
+			<forward name="suaTaiXe" path="/SuaTaiXe.jsp" />
+			<forward name="suaTaiXeLoi" path="/SuaTaiXe.jsp" />
+			<forward name="suaTaiXeThanhCong" path="/DanhSachTaiXe.jsp" />
+		</action>
+		<!-- chuyen xe -->
+		<action input="/DangNhap.jsp" name="chuyenXeForm"
+			path="/chuyenXeAction" scope="request" type="action.ChuyenXeAction">
+			<forward name="danhSachChuyenXe" path="/DanhSachChuyenXe.jsp" />
+			<forward name="themChuyenXe" path="/ThemChuyenXe.jsp" />
+			<forward name="themChuyenXeLoi" path="/ThemChuyenXe.jsp" />
+			<forward name="themChuyenXeThanhCong" path="/DanhSachChuyenXe.jsp" />
+			
+			<forward name="suaChuyenXe" path="/SuaChuyenXe.jsp" />
+			<forward name="suaChuyenXeLoi" path="/SuaChuyenXe.jsp" />
+			<forward name="suaChuyenXeThanhCong" path="/DanhSachChuyenXe.jsp" />
+			
+			<forward name="xoaChuyenXe" path="/XoaChuyenXe.jsp" />
+			<forward name="xoaChuyenXeLoi" path="/XoaChuyenXe.jsp" />
+			<forward name="xoaChuyenXeThanhCong" path="/DanhSachChuyenXe.jsp" />
+		</action>
+		<!-- tuyen xe -->
+		<action input="/DangNhap.jsp" name="tuyenXeForm"
+			path="/tuyenXeAction" scope="request" type="action.TuyenXeAction">
+			<forward name="danhSachTuyenXe" path="/DanhSachTuyenXe.jsp" />
+			<forward name="themTuyenXe" path="/ThemTuyenXe.jsp" />
+			<forward name="themTuyenXeLoi" path="/ThemTuyenXe.jsp" />
+			<forward name="themTuyenXeThanhCong" path="/DanhSachTuyenXe.jsp" />
+			
+			<forward name="suaTuyenXe" path="/SuaTuyenXe.jsp" />
+			<forward name="suaTuyenXeLoi" path="/SuaTuyenXe.jsp" />
+			<forward name="suaTuyenXeThanhCong" path="/DanhSachTuyenXe.jsp" />
+			
+			<forward name="xoaTuyenXe" path="/XoaTuyenXe.jsp" />
+			<forward name="xoaTuyenXeLoi" path="/XoaTuyenXe.jsp" />
+			<forward name="xoaTuyenXeThanhCong" path="/DanhSachTuyenXe.jsp" />
+		</action>
+		
+		<!-- xe -->
+		<action input="/DangNhap.jsp" name="xeForm"
+			path="/xeAction" scope="request" type="action.XeAction">
+			<forward name="danhSachXe" path="/DanhSachXe.jsp" />
+			<forward name="themXe" path="/ThemXe.jsp" />
+			<forward name="themXeLoi" path="/ThemXe.jsp" />
+			<forward name="themXeThanhCong" path="/DanhSachXe.jsp" />
+			
+			<forward name="suaXe" path="/SuaXe.jsp" />
+			<forward name="suaXeLoi" path="/SuaXe.jsp" />
+			<forward name="suaXeThanhCong" path="/DanhSachXe.jsp" />
+			
+			<forward name="xoaXe" path="/XoaXe.jsp" />
+			<forward name="xoaXeLoi" path="/XoaXe.jsp" />
+			<forward name="xoaXeThanhCong" path="/DanhSachXe.jsp" />
+		</action>
+		
+	</action-mappings>
+	<message-resources
+		parameter="action.ApplicationResources" />
+</struts-config>
