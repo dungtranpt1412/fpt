@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -25,15 +25,16 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body id="page-top">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-	<!-- Include MenuFrom -->
-<jsp:include page="MenuForm.jsp"></jsp:include>
+		<!-- Include MenuFrom -->
+		<jsp:include page="MenuForm.jsp"></jsp:include>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -55,13 +56,44 @@
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
 							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
+<script>
+								function myFunction() {
+									var input, filter, table, tr, td, i, txtValue, comboBox;
+									comboBox = document
+											.getElementById("mySelect").selectedIndex;
+									input = document.getElementById("myInput");
+									filter = input.value.toUpperCase();
+									table = document
+											.getElementById("dataTable");
+									tr = table.getElementsByTagName("tr");
+									for (i = 0; i < tr.length; i++) {
+										td = tr[i].getElementsByTagName("td")[comboBox];
+										if (td) {
+											txtValue = td.textContent
+													|| td.innerText;
+											if (txtValue.toUpperCase().indexOf(
+													filter) > -1) {
+												tr[i].style.display = "";
+											} else {
+												tr[i].style.display = "none";
+											}
+										}
+									}
+								}
+							</script>
+							<input class="form-control bg-light border-0 small" type="text" id="myInput" onkeyup="myFunction()"
+								placeholder="Search for ..." > 
+								<select class="form-control" style="width: 50%;margin-left: 20px;"
+								id="mySelect">
+								<option>Mã Tài Xế</option>
+								<option>Tên Tài Xế</option>
+								<option>Ngày Sinh</option>
+								<option>Giờ Đến</option>
+								<option>Giới Tính</option>
+								<option>CMND</option>
+								<option>Điện Thoại</option>
+							</select>
 							</div>
 						</div>
 					</form>
@@ -78,8 +110,15 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h3 class="m-0 font-weight-bold text-primary">Danh sách các tài xế</h3>
-								<button class="btn btn-primary" style="float: right;">Thêm Mới</button>
+							<h3 class="m-0 font-weight-bold text-primary">Danh sách các
+								tài xế</h3>
+							<p style="color: red; font-style: italic;">
+								<bean:write name="taiXeForm" property="thongBao" />
+							</p>
+							<div class="col-lg2 pull-right">
+								<html:link styleClass="btn btn-primary"
+									action="/taiXeAction?action=them">Thêm mới</html:link>
+							</div>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -96,27 +135,24 @@
 											<th>Tùy Chỉnh</th>
 										</tr>
 									</thead>
-									
+
 									<tbody>
-									<logic:iterate id="tx" name="taiXeForm" property="lstTaiXe">
-										<tr>
-											<td><bean:write name="tx" property="maTaiXe"/></td>
-											<td><bean:write name="tx" property="tenTaiXe"/></td>
-											<td><bean:write name="tx" property="ngaySinh"/></td>
-											<td><bean:write name="tx" property="gioiTinh"/></td>
-											<td><bean:write name="tx" property="cmnd"/></td>
-											<td><bean:write name="tx" property="dienThoai"/></td>
-											<td>
-											<bean:define id="id" name="tx" property="maTaiXe"></bean:define>
-											<html:link action="/taiXeAction?userID=${id}&action=edit">
-						                		<i class="fa fa-edit"></i>
-						                		</html:link>
-						                		<html:link action="/taiXeAction?userID=${id}&action=delete">
-						                		<i class="fa fa-trash" style="margin-left: 5px;"></i>
-						                		</html:link>
-											</td>
-										</tr>
-									</logic:iterate>
+										<logic:iterate id="tx" name="taiXeForm" property="listTaiXe">
+											<tr>
+												<td><bean:write name="tx" property="maTaiXe" /></td>
+												<td><bean:write name="tx" property="tenTaiXe" /></td>
+												<td><bean:write name="tx" property="ngaySinh" /></td>
+												<td><bean:write name="tx" property="gioiTinh" /></td>
+												<td><bean:write name="tx" property="cmnd" /></td>
+												<td><bean:write name="tx" property="dienThoai" /></td>
+												<td><bean:define id="id" name="tx" property="maTaiXe"></bean:define>
+													<html:link action="/taiXeAction?maTaiXe=${id}&action=sua">
+														<i class="fa fa-edit"></i>
+													</html:link> <html:link action="/taiXeAction?maTaiXe=${id}&action=xoa">
+														<i class="fa fa-trash" style="margin-left: 5px;"></i>
+													</html:link></td>
+											</tr>
+										</logic:iterate>
 									</tbody>
 								</table>
 								<div class="row">
@@ -157,7 +193,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; 2N3D Team</span>
 					</div>
 				</div>
 			</footer>

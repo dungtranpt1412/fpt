@@ -5,6 +5,7 @@ public class Xe {
 	private String tenXe;
 	private String bienSo;
 	private int soGhe;
+	private String tenNhaXe;
 	public String getMaXe() {
 		return maXe;
 	}
@@ -29,14 +30,20 @@ public class Xe {
 	public void setSoGhe(int soGhe) {
 		this.soGhe = soGhe;
 	}
-	public Xe(String maXe, String tenXe, String bienSo, int soGhe) {
+	public String getTenNhaXe() {
+		return tenNhaXe;
+	}
+	public void setTenNhaXe(String tenNhaXe) {
+		this.tenNhaXe = tenNhaXe;
+	}
+	public Xe(String maXe, String tenXe, String bienSo, int soGhe, String tenNhaXe) {
 		super();
 		this.maXe = maXe;
 		this.tenXe = tenXe;
 		this.bienSo = bienSo;
 		this.soGhe = soGhe;
+		this.tenNhaXe = tenNhaXe;
 	}
 	public Xe() {
-		
 	}
 }

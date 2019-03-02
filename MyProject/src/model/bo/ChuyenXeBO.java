@@ -1,5 +1,6 @@
 package model.bo;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -13,17 +14,16 @@ public class ChuyenXeBO {
 		return lstChuyenXe=cxd.getAllChuyenXe();
 	}
 	public int addChuyenXe(String maChuyenXe, String maTuyen, LocalTime gioDi, LocalTime gioDen, String userID, 
-			int choTrong, String maTaiXe) {
+			int choTrong, String maTaiXe, String maXe, LocalDate ngayXuatPhat) {
 		if(findChuyenXe(maChuyenXe)==null)
-			return cxd.addChuyenXe(maChuyenXe, maTuyen, gioDi, gioDen, userID, choTrong, maTaiXe);
+			return cxd.addChuyenXe(maChuyenXe, maTuyen, gioDi, gioDen, userID, choTrong, maTaiXe, maXe, ngayXuatPhat);
 		return 0;
 	}
 	public int updateChuyenXe(String maChuyenXe, String maTuyen, LocalTime gioDi, LocalTime gioDen, String userID, 
-			int choTrong, String maTaiXe) {
+			int choTrong, String maTaiXe, String maXe, LocalDate ngayXuatPhat) {
 		if(findChuyenXe(maChuyenXe)!=null)
-			return cxd.updateChuyenXe(maChuyenXe, maTuyen, gioDi, gioDen, userID, choTrong, maTaiXe);
-		return 0;
-		
+			return cxd.updateChuyenXe(maChuyenXe, maTuyen, gioDi, gioDen, userID, choTrong, maTaiXe, maXe, ngayXuatPhat);
+		return 0;	
 	}
 	public int deleteChuyenXe(String maChuyenXe) {
 		if(findChuyenXe(maChuyenXe)!=null)

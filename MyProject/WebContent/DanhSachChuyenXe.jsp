@@ -54,13 +54,46 @@
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
 							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
+								<script>
+								function myFunction() {
+									var input, filter, table, tr, td, i, txtValue, comboBox;
+									comboBox = document
+											.getElementById("mySelect").selectedIndex;
+									input = document.getElementById("myInput");
+									filter = input.value.toUpperCase();
+									table = document
+											.getElementById("dataTable");
+									tr = table.getElementsByTagName("tr");
+									for (i = 0; i < tr.length; i++) {
+										td = tr[i].getElementsByTagName("td")[comboBox];
+										if (td) {
+											txtValue = td.textContent
+													|| td.innerText;
+											if (txtValue.toUpperCase().indexOf(
+													filter) > -1) {
+												tr[i].style.display = "";
+											} else {
+												tr[i].style.display = "none";
+											}
+										}
+									}
+								}
+							</script>
+							<input class="form-control bg-light border-0 small" type="text" id="myInput" onkeyup="myFunction()"
+								placeholder="Search for ..." > 
+								<select class="form-control" style="width: 50%;margin-left: 20px;"
+								id="mySelect">
+								<option>Mã Chuyến Xe</option>
+								<option>Mã Tuyến</option>
+								<option>Giờ Đi</option>
+								<option>Giờ Đến</option>
+								<option>UserID</option>
+								<option>Chỗ Trống</option>
+								<option>Mã Tài Xế</option>
+								<option>Mã Xe</option>
+								<option>Ngày Xuất Phát</option>
+							</select>
 							</div>
 						</div>
 					</form>
@@ -76,10 +109,14 @@
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
+					
 						<div class="card-header py-3">
 							<h3 class="m-0 font-weight-bold text-primary">Danh sách các chuyến xe</h3>
+							<div class="row">
+							</div>
 								<button class="btn btn-primary" style="float: right;">Thêm Mới</button>
 						</div>
+						
 						<div class="card-body">
 							<div class="table-responsive">
 								<table class="table table-bordered" id="dataTable" width="100%"
@@ -93,12 +130,13 @@
 											<th>UserID</th>
 											<th>Chỗ Trống</th>
 											<th>Mã Tài Xế</th>
+											<th>Mã Xe</th>
+											<th>Ngày Xuất Phát</th>
 											<th>Tùy Chỉnh</th>
 										</tr>
 									</thead>
-									
 									<tbody>
-									<logic:iterate id="cx" name="chuyenXeForm" property="lstChuyenXe">
+									<logic:iterate id="cx" name="chuyenXeForm" property="listChuyenXe">
 										<tr>
 											<td><bean:write name="cx" property="maChuyenXe"/></td>
 											<td><bean:write name="cx" property="maTuyen"/></td>
@@ -107,6 +145,8 @@
 											<td><bean:write name="cx" property="userID"/></td>
 											<td><bean:write name="cx" property="choTrong"/></td>
 											<td><bean:write name="cx" property="maTaiXe"/></td>
+											<td><bean:write name="cx" property="maXe"/></td>
+											<td><bean:write name="cx" property="ngayXuatPhat"/></td>
 											<td>
 											<bean:define id="id" name="cx" property="maChuyenXe"></bean:define>
 											<html:link action="/chuyenXeAction?maChuyenXe=${id}&action=edit">
@@ -158,7 +198,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; 2N3D Team</span>
 					</div>
 				</div>
 			</footer>

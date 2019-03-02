@@ -19,7 +19,7 @@ public class XeDAO {
 			stmt=DbConnect.cnn.prepareStatement(sql);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
-				arr.add(new Xe(rs.getString("maXe"), rs.getString("tenXe"), rs.getString("bienSo"), rs.getInt("soGhe")));
+				arr.add(new Xe(rs.getString("maXe"), rs.getString("tenXe"), rs.getString("bienSo"), rs.getInt("soGhe"), rs.getString("tenNhaXe")));
 			}
 			rs.close();
 			stmt.close();
@@ -29,9 +29,9 @@ public class XeDAO {
 		}
 		return arr;
 	}
-	public int addXe(String maXe, String tenXe, String bienSo, int soGhe) {
+	public int addXe(String maXe, String tenXe, String bienSo, int soGhe, String tenNhaXe) {
 		DbConnect.getConnect();
-		String sql="insert into Xe(maXe, tenXe, bienSo, soGhe) values(?, ?, ?, ?)";
+		String sql="insert into Xe(maXe, tenXe, bienSo, soGhe, tenNhaXe) values(?, ?, ?, ?,?)";
 		PreparedStatement stmt=null;
 		int c=0;
 		try {
@@ -40,6 +40,7 @@ public class XeDAO {
 			stmt.setString(2, tenXe);
 			stmt.setString(3, bienSo);
 			stmt.setInt(4, soGhe);
+			stmt.setString(5, tenNhaXe);
 			c= stmt.executeUpdate();
 			stmt.close();
 			DbConnect.cnn.close();
@@ -48,9 +49,9 @@ public class XeDAO {
 		}
 		return c;		
 	}
-	public int updateXe(String maXe, String tenXe, String bienSo, int soGhe) {
+	public int updateXe(String maXe, String tenXe, String bienSo, int soGhe, String tenNhaXe) {
 		DbConnect.getConnect();
-		String sql="update Xe set tenXe=?, bienSo=?, soGhe=? where maXe=?";
+		String sql="update Xe set tenXe=?, bienSo=?, soGhe=?, tenNhaXe=? where maXe=?";
 		PreparedStatement stmt=null;
 		int c=0;
 		try {
@@ -58,7 +59,8 @@ public class XeDAO {
 			stmt.setString(1, tenXe);
 			stmt.setString(2, bienSo);
 			stmt.setInt(3, soGhe);
-			stmt.setString(4, maXe);
+			stmt.setString(4, tenNhaXe);
+			stmt.setString(5, maXe);
 			c= stmt.executeUpdate();
 			stmt.close();
 			DbConnect.cnn.close();

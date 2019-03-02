@@ -55,19 +55,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
+<marquee><h1 style="color: blue;">Hệ Thống Quản Lý Vé Xe Khách</h1></marquee>
 					<!-- Topbar Navbar -->
 				</nav>
 				<!-- Form thêm -->
@@ -80,14 +68,17 @@
 				<div class="row">
 					<label class="col-25" for="lname">Password</label>
 					<html:text property="password" styleClass="col-75" styleId="fname"  ></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 				</div>
 				<div class="row">
 					<label class="col-25" for="lname">Họ Tên</label>
 					<html:text property="hoTen" styleClass="col-75" styleId="fname"  ></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Ngày Sinh</label>
 					<html:text property="ngaySinh" styleClass="col-75" styleId="fname"></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 							<!-- radio gioi tinh -->
@@ -100,22 +91,25 @@
 							<div class="row">
 					<label class="col-25" for="lname">CMND</label>
 					<html:text property="cmnd" styleClass="col-75" styleId="fname"  ></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Điện Thoại</label>
 					<html:text property="dienThoai" styleClass="col-75" styleId="fname"></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Email</label>
 					<html:text property="email" styleClass="col-75" styleId="fname"></html:text>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>				
 							<div class="row">
 					<label class="col-25" for="lname">Quyền</label>
-					
 					<html:select property="maQuyen" style="margin-left: 65px;">
 					<html:option value="0">Người dùng</html:option>
 					<html:option value="1">Admin</html:option>
 					</html:select>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 					</div><br>
 							<div class="row">
 				<input style="margin-left: 525px" type="submit" value="Sửa" name="sua"> 

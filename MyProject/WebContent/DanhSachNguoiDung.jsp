@@ -55,13 +55,46 @@
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
 							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
+<script>
+								function myFunction() {
+									var input, filter, table, tr, td, i, txtValue, comboBox;
+									comboBox = document
+											.getElementById("mySelect").selectedIndex;
+									input = document.getElementById("myInput");
+									filter = input.value.toUpperCase();
+									table = document
+											.getElementById("dataTable");
+									tr = table.getElementsByTagName("tr");
+									for (i = 0; i < tr.length; i++) {
+										td = tr[i].getElementsByTagName("td")[comboBox];
+										if (td) {
+											txtValue = td.textContent
+													|| td.innerText;
+											if (txtValue.toUpperCase().indexOf(
+													filter) > -1) {
+												tr[i].style.display = "";
+											} else {
+												tr[i].style.display = "none";
+											}
+										}
+									}
+								}
+							</script>
+							<input class="form-control bg-light border-0 small" type="text" id="myInput" onkeyup="myFunction()"
+								placeholder="Search for ..." > 
+								<select class="form-control" style="width: 50%;margin-left: 20px;"
+								id="mySelect">
+								<option>UserID</option>
+								<option>Password</option>
+								<option>Họ Tên</option>
+								<option>Ngày Sinh</option>
+								<option>Giới Tính</option>
+								<option>CMND</option>
+								<option>Điện Thoại</option>
+								<option>Email</option>
+								<option>Mã Quyền</option>
+							</select>
 							</div>
 						</div>
 					</form>
@@ -166,7 +199,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy; 2N3D Team</span>
 					</div>
 				</div>
 			</footer>

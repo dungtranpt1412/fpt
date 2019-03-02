@@ -9,6 +9,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="chuyenXeForm" type="form.ChuyenXeForm" />
 		<form-bean name="tuyenXeForm" type="form.TuyenXeForm" />
 		<form-bean name="xeForm" type="form.XeForm" />
+		<form-bean name="timXeForm" type="form.TimXeForm" />
 	</form-beans>
 	<action-mappings>
 		<action input="/DangNhap.jsp" name="userDNForm"
@@ -96,6 +97,12 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="xoaXe" path="/XoaXe.jsp" />
 			<forward name="xoaXeLoi" path="/XoaXe.jsp" />
 			<forward name="xoaXeThanhCong" path="/DanhSachXe.jsp" />
+		</action>
+		
+		<action input="/DangNhap.jsp" name="timXeForm"
+			path="/timXeAction" scope="request" type="action.TimXeAction">
+			<forward name="timXe" path="/TimXe.jsp" />
+			<forward name="danhSachTimXe" path="/DanhSachTimVe.jsp" />
 		</action>
 		
 	</action-mappings>

@@ -1,6 +1,8 @@
 package model.bo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import model.bean.TuyenXe;
 import model.dao.TuyenXeDAO;
@@ -33,6 +35,24 @@ public class TuyenXeBO {
 		}
 		return null;
 	}
-	
-
+	public Set<String> getDiemDi(){
+		Set<String> arr= new HashSet<>();
+		for (TuyenXe tx : lstTuyenXe)
+			arr.add(tx.getDiemDi());
+		return arr;
+	}
+	public Set<String> getDiemDen(){
+		Set<String> arr= new HashSet<>();
+		for (TuyenXe tx : lstTuyenXe)
+			arr.add(tx.getDiemDen());
+		return arr;
+	}
+	public static void main(String[] args) {
+		TuyenXeBO txb= new TuyenXeBO();
+		txb.getAllTuyenXe();
+		Set<String> diemDi=txb.getDiemDi();
+		for (String string : diemDi) {
+			System.out.println(string);
+		}
+	}
 }

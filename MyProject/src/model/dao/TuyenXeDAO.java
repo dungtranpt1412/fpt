@@ -51,7 +51,7 @@ public class TuyenXeDAO {
 	}
 	public int updateTuyenXe(String maTuyen, String tenTuyen, String diemDi, String diemDen, int bangGia) {
 		DbConnect.getConnect();
-		String sql="update from TuyenXe set tenTuyen=?, diemDi=?, diemDen=?, bangGia=? where maTuyen=?";
+		String sql="update TuyenXe set tenTuyen=?, diemDi=?, diemDen=?, bangGia=? where maTuyen=?";
 		int c=0;
 		PreparedStatement stmt=null;
 		try {

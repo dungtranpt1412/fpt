@@ -32,8 +32,8 @@
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
-<!-- Include MenuFrom -->
-<jsp:include page="MenuForm.jsp"></jsp:include>
+		<!-- Include MenuFrom -->
+		<jsp:include page="MenuForm.jsp"></jsp:include>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -55,13 +55,42 @@
 					<form
 						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
 							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
+<script>
+								function myFunction() {
+									var input, filter, table, tr, td, i, txtValue, comboBox;
+									comboBox = document
+											.getElementById("mySelect").selectedIndex;
+									input = document.getElementById("myInput");
+									filter = input.value.toUpperCase();
+									table = document
+											.getElementById("dataTable");
+									tr = table.getElementsByTagName("tr");
+									for (i = 0; i < tr.length; i++) {
+										td = tr[i].getElementsByTagName("td")[comboBox];
+										if (td) {
+											txtValue = td.textContent
+													|| td.innerText;
+											if (txtValue.toUpperCase().indexOf(
+													filter) > -1) {
+												tr[i].style.display = "";
+											} else {
+												tr[i].style.display = "none";
+											}
+										}
+									}
+								}
+							</script>
+							<input class="form-control bg-light border-0 small" type="text" id="myInput" onkeyup="myFunction()"
+								placeholder="Search for ..." > 
+								<select class="form-control" style="width: 50%;margin-left: 20px;"
+								id="mySelect">
+								<option>Mã Xe</option>
+								<option>Tên Xe</option>
+								<option>Biển Số</option>
+								<option>Số Ghế</option>
+								<option>Tên Nhà Xe</option>
+							</select>
 							</div>
 						</div>
 					</form>
@@ -78,9 +107,15 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h3 class="m-0 font-weight-bold text-primary">Danh sách xe khách</h3>
-							<button class="btn btn-primary" style="float: right;">Thêm
-								Mới</button>
+							<h3 class="m-0 font-weight-bold text-primary">Danh sách xe
+								khách</h3>
+							<p style="color: red; font-style: italic;">
+								<bean:write name="xeForm" property="thongBao" />
+							</p>
+							<div class="col-lg2 pull-right">
+								<html:link styleClass="btn btn-primary"
+									action="/xeAction?action=them">Thêm mới</html:link>
+							</div>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -88,25 +123,26 @@
 									cellspacing="0">
 									<thead>
 										<tr>
-											<th>Ma Xe</th>
-											<th>Ten Xe</th>
-											<th>Bien So</th>
-											<th>So Ghe</th>
+											<th>Mã Xe</th>
+											<th>Tên Xe</th>
+											<th>Biển Số</th>
+											<th>Số Ghế</th>
+											<th>Tên Nhà Xe</th>
 											<th>Tùy Chỉnh</th>
 										</tr>
 									</thead>
 									<tbody>
-										<logic:iterate id="un" name="xeForm" property="listXe">
+										<logic:iterate id="xe" name="xeForm" property="listXe">
 											<tr>
-												<td><bean:write name="un" property="maXe" /></td>
-												<td><bean:write name="un" property="tenXe" /></td>
-												<td><bean:write name="un" property="bienSo" /></td>
-												<td><bean:write name="un" property="soGhe" /></td>
-												<td><html:link
-														action="/xeAction?maXe=${id}&action=edit">
+												<td><bean:write name="xe" property="maXe" /></td>
+												<td><bean:write name="xe" property="tenXe" /></td>
+												<td><bean:write name="xe" property="bienSo" /></td>
+												<td><bean:write name="xe" property="soGhe" /></td>
+												<td><bean:write name="xe" property="tenNhaXe" /></td>
+												<td><bean:define id="id" name="xe" property="maXe"></bean:define>
+													<html:link action="/xeAction?maXe=${id}&action=sua">
 														<i class="fa fa-edit"></i>
-													</html:link> 
-													<html:link action="/xeAction?maXe=${id}&action=delete">
+													</html:link> <html:link action="/xeAction?maXe=${id}&action=xoa">
 														<i class="fa fa-trash" style="margin-left: 5px;"></i>
 													</html:link></td>
 											</tr>
@@ -151,7 +187,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Your Website 2019</span>
+						<span>Copyright &copy;2N3D Team</span>
 					</div>
 				</div>
 			</footer>

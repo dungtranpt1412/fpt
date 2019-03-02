@@ -20,16 +20,16 @@ public class VeXeDAO {
 			stmt=DbConnect.cnn.prepareStatement(sql);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
-				arr.add(new VeXe(rs.getInt("maVe"), rs.getString("tenVe"), rs.getString("userID"), rs.getString("maChuXe"), rs.getString("viTri"), rs.getString("maXe"), rs.getDate("ngayDat")));
+				arr.add(new VeXe(rs.getInt("maVe"), rs.getString("tenVe"), rs.getString("userID"), rs.getString("maChuXe"), rs.getString("viTri"),rs.getDate("ngayDat")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return arr;
 	}
-	public int addVeXe(String tenVe, String userID, String maChuXe, String viTri, String maXe, Date ngayDat) {
+	public int addVeXe(String tenVe, String userID, String maChuXe, String viTri, Date ngayDat) {
 		DbConnect.getConnect();
-		String sql="insert into VeXe(tenVe, userID, maChuXe, viTri, maXe, ngayDat) values(?, ?, ?, ?, ?, ?)";
+		String sql="insert into VeXe(tenVe, userID, maChuXe, viTri, ngayDat) values(?, ?, ?, ?, ?)";
 		PreparedStatement stmt=null;
 		int c=0;
 		try {
@@ -38,8 +38,7 @@ public class VeXeDAO {
 			stmt.setString(2, userID);
 			stmt.setString(3, maChuXe);
 			stmt.setString(4, viTri);
-			stmt.setString(5, maXe);
-			stmt.setString(6, ngayDat.toString());
+			stmt.setString(5, ngayDat.toString());
 			c=stmt.executeUpdate();
 			stmt.close();
 			DbConnect.cnn.close();
@@ -48,9 +47,9 @@ public class VeXeDAO {
 		}
 		return c;
 	}
-	public int updateVeXe(int maVe, String tenVe, String userID, String maChuXe, String viTri, String maXe, Date ngayDat) {
+	public int updateVeXe(int maVe, String tenVe, String userID, String maChuXe, String viTri, Date ngayDat) {
 		DbConnect.getConnect();
-		String sql="update VeXe set tenVe=?, userID=?, maChuXe=?, viTri=?, maXe=?, ngayDat=? where maVe=?";
+		String sql="update VeXe set tenVe=?, userID=?, maChuXe=?, viTri=?, ngayDat=? where maVe=?";
 		PreparedStatement stmt=null;
 		int c=0;
 		try {
@@ -59,9 +58,8 @@ public class VeXeDAO {
 			stmt.setString(2, userID);
 			stmt.setString(3, maChuXe);
 			stmt.setString(4, viTri);
-			stmt.setString(5, maXe);
-			stmt.setString(6, ngayDat.toString());
-			stmt.setInt(7, maVe);
+			stmt.setString(5, ngayDat.toString());
+			stmt.setInt(6, maVe);
 			c=stmt.executeUpdate();
 			stmt.close();
 			DbConnect.cnn.close();

@@ -11,14 +11,14 @@ public class XeBO {
 	public List<Xe> getAllXe(){
 		return lstXe=xd.getAllXe();
 	}
-	public int addXe(String maXe, String tenXe, String bienSo, int soGhe) {
+	public int addXe(String maXe, String tenXe, String bienSo, int soGhe, String tenNhaXe) {
 		if(findXe(maXe)==null)
-			return xd.addXe(maXe, tenXe, bienSo, soGhe);
+			return xd.addXe(maXe, tenXe, bienSo, soGhe, tenNhaXe);
 		return 0;
 	}
-	public int updateXe(String maXe, String tenXe, String bienSo, int soGhe) {
+	public int updateXe(String maXe, String tenXe, String bienSo, int soGhe, String tenNhaXe) {
 		if(findXe(maXe)!=null)
-			return xd.updateXe(maXe, tenXe, bienSo, soGhe);
+			return xd.updateXe(maXe, tenXe, bienSo, soGhe, tenNhaXe);
 		return 0;
 	}
 	public int deleteXe(String maXe) {

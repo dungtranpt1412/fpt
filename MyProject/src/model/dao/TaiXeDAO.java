@@ -55,7 +55,7 @@ public class TaiXeDAO {
 	}
 	public int updateTaiXe(String maTaiXe, String tenTaiXe, LocalDate ngaySinh, String gioiTinh, String cmnd, String dienThoai) {
 		DbConnect.getConnect();
-		String sql="update TaiXe set tenTaiXe=?, ngaySinh=?, gioiTinh=?, cmnd=?, dienThoai=?) where maTaiXe=?";
+		String sql="update TaiXe set tenTaiXe=?, ngaySinh=?, gioiTinh=?, cmnd=?, dienThoai=? where maTaiXe=?";
 		PreparedStatement stmt=null;
 		int c=0;
 		try {

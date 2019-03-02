@@ -12,12 +12,12 @@ public class VeXeBO {
 	public List<VeXe> getAllVeXe(){
 		return vxd.getAllVeXe();
 	}
-	public int addVeXe(String tenVe, String userID, String maChuXe, String viTri, String maXe, Date ngayDat) {
-			return vxd.addVeXe(tenVe, userID, maChuXe, viTri, maXe, ngayDat);
+	public int addVeXe(String tenVe, String userID, String maChuXe, String viTri, Date ngayDat) {
+			return vxd.addVeXe(tenVe, userID, maChuXe, viTri, ngayDat);
 	}
-	public int updateVeXe(int maVe, String tenVe, String userID, String maChuXe, String viTri, String maXe, Date ngayDat) {
+	public int updateVeXe(int maVe, String tenVe, String userID, String maChuXe, String viTri, Date ngayDat) {
 		if(findVeXe(maVe)!=null)
-			return vxd.updateVeXe(maVe, tenVe, userID, maChuXe, viTri, maXe, ngayDat);
+			return vxd.updateVeXe(maVe, tenVe, userID, maChuXe, viTri, ngayDat);
 		return 0;
 	}
 	public int deleteVeXe(int maVe) {

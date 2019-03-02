@@ -54,19 +54,7 @@
 					</button>
 
 					<!-- Topbar Search -->
-					<form
-						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-						<div class="input-group">
-							<input type="text" class="form-control bg-light border-0 small"
-								placeholder="Search for..." aria-label="Search"
-								aria-describedby="basic-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="button">
-									<i class="fas fa-search fa-sm"></i>
-								</button>
-							</div>
-						</div>
-					</form>
+<marquee><h1 style="color: blue;">Hệ Thống Quản Lý Vé Xe Khách</h1></marquee>
 					<!-- Topbar Navbar -->
 				</nav>
 				<!-- Form thêm -->
@@ -80,21 +68,25 @@
 					<label class="col-25" for="fname">UserID</label>		
 					<input class="col-75" type="text" id="fname" name="userID"
 							placeholder="Vui lòng nhập userID" required="required" >
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 				</div>
 				<div class="row">
 					<label class="col-25" for="lname">Password</label>
 					<input class="col-75" type="text" id="lname" name="password"
 							placeholder="Vui lòng nhập password" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 				</div>
 				<div class="row">
 					<label class="col-25" for="lname">Họ Tên</label>
 					<input class="col-75" type="text" id="lname" name="hoTen"
 							placeholder="Vui lòng nhập họ tên" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Ngày Sinh</label>
 					<input class="col-75" type="text" id="lname" name="ngaySinh"
 							placeholder="Vui lòng nhập ngày sinh" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 							<!-- radio gioi tinh -->
@@ -102,6 +94,7 @@
 							<div  style="    margin-left: 65px; margin-top: 12px;"> 
 							<input  type="radio" name="gioiTinh" value="Nam"> Nam
 							<input  type="radio" name="gioiTinh" value="Nữ" style="margin-left: 20px;"> Nữ
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<!-- end radio gioi tinh -->
 							</div>
@@ -110,23 +103,29 @@
 					<label class="col-25" for="lname">CMND</label>
 					<input class="col-75" type="text" id="lname" name="cmnd"
 							placeholder="Vui lòng nhập cmnd" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Điện Thoại</label>
 					<input class="col-75" type="text" id="lname" name="dienThoai"
 							placeholder="Vui lòng nhập điện thoại" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Email</label>
 					<input class="col-75" type="text" id="lname" name="email"
 							placeholder="Vui lòng nhập email" required="required">
+							<span style="color: red;margin: 17px;font-weight: bold;">*</span>
 							</div>
 							<div class="row">
 					<label class="col-25" for="lname">Quyền</label>
 					<select name="maQuyen" style="margin-left: 65px">
 					<option selected="selected" value="0">Người dùng</option>
 					<option  value="1">Admin</option>
-					</select></div><br>
+					</select>
+					<span style="color: red;margin: 17px;font-weight: bold;">*</span>
+					</div>
+					<br>
 							<div class="row">
 				<input style="margin-left: 525px" type="submit" value="Thêm" name="them"> 
 				<input style="margin-left: 15px" type="submit" value="Hủy" name="huy">
